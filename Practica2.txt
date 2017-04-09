@@ -1,0 +1,1 @@
+./Debug/main.c.o ./Debug/LS_allegro.c.o ./Debug/loadRanking.c.o   
