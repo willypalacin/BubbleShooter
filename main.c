@@ -30,6 +30,10 @@ int main(void){
 				//Generamos Matriz de casillas
 				GRAFICA_generarMatriz(partida);
 				
+				//Generamos la primera fila de la matriz
+				GRAFICA_generarFilaBola1(partida);
+				
+				
 				while(!nSortir){
 					GRAFICA_pintarPantalla(partida);
 					

@@ -55,6 +55,21 @@ void GRAFICA_generarMatriz(Partida partida[1]) {
 	}
 }
 
+void GRAFICA_generarFilaBola1(Partida partida[1]) {
+	int i, j;
+	i = 0;
+	partida[0].casilla[0][0].bola.color = GRAFICA_colorRandom();
+	partida[0].casilla[0][0].ok_bola = 1;
+	
+	for (j = 1; j < 12; j++) {
+		do {
+			partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
+		//No generamos bolas del mismo color para posiciones adyacentes
+		} while (partida[0].casilla[i][j-1].bola.color == partida[0].casilla[i][j].bola.color);
+		partida[0].casilla[i][j].ok_bola = 1;
+	}
+}
+	
 
 void GRAFICA_pedirNombre(Partida partida[1]) {
 	printf("%s","Introduzca el nombre: ");
@@ -95,6 +110,7 @@ void pintarBolas(Partida partida[1]) {
 
 }
 
+
 void GRAFICA_inicializarDisparador(Partida partida[1]) {
 	partida[0].disparador.pos_x = 385;
 	partida[0].disparador.pos_y = 550;
@@ -126,8 +142,6 @@ void GRAFICA_pintarPantalla(Partida partida[1]) {
 	pintarDisparador(partida);
 	pintarBolas(partida);
 	
-	
-
 	
 }
 
