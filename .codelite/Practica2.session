@@ -5,22 +5,31 @@
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.c" Name="FileName"/>
-      <int Value="60" Name="FirstVisibleLine"/>
-      <int Value="73" Name="CurrentLine"/>
+      <int Value="49" Name="FirstVisibleLine"/>
+      <int Value="132" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
+      <IntVector Name="CollapsedFolds">
+        <IntVectorItem Value="32"/>
+        <IntVectorItem Value="58"/>
+        <IntVectorItem Value="67"/>
+        <IntVectorItem Value="74"/>
+        <IntVectorItem Value="84"/>
+        <IntVectorItem Value="97"/>
+        <IntVectorItem Value="111"/>
+        <IntVectorItem Value="136"/>
+      </IntVector>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="8" Name="CurrentLine"/>
+      <int Value="6" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\main.c" Name="FileName"/>
-      <int Value="2" Name="FirstVisibleLine"/>
-      <int Value="12" Name="CurrentLine"/>
+      <int Value="9" Name="FirstVisibleLine"/>
+      <int Value="30" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

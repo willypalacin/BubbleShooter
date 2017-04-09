@@ -25,8 +25,10 @@ int main(void){
 				GRAFICA_inicializarBolasReserva (partida);
 				
 				//Iniciaremos la posicion del disparador y de la bola del disparador.
+				GRAFICA_inicializarDisparador(partida);
 				
-				//GRAFICA_inicializarDisparador(partida);
+				//Generamos Matriz de casillas
+				GRAFICA_generarMatriz(partida);
 				
 				while(!nSortir){
 					GRAFICA_pintarPantalla(partida);
