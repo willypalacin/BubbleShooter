@@ -25,6 +25,11 @@
     <File Name="LS_allegro.h"/>
     <File Name="loadRanking.c"/>
     <File Name="loadRanking.h"/>
+    <File Name="animaciones.c"/>
+    <File Name="animaciones.h"/>
+    <File Name="grafica.c"/>
+    <File Name="grafica.h"/>
+    <File Name="datos.h"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

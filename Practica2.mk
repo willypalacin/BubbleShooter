@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=Practica2
 ConfigurationName      :=Debug
-WorkspacePath          := "C:\Users\sergi\Downloads\Projecte_Base_Windows\Practica2"
-ProjectPath            := "C:\Users\sergi\Downloads\Projecte_Base_Windows\Practica2"
+WorkspacePath          := "C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2"
+ProjectPath            := "C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=sergi
-Date                   :=12/19/16
+User                   :=MB
+Date                   :=04/09/17
 CodeLitePath           :="C:\Program Files (x86)\CodeLite"
 LinkerName             :=C:/MinGW-4.8.1/bin/g++.exe 
 SharedObjectLinkerName :=C:/MinGW-4.8.1/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := C:/MinGW-4.8.1/bin/as.exe
 ##
 CodeLiteDir:=C:\Program Files (x86)\CodeLite
 UNIT_TEST_PP_SRC_DIR:=C:\UnitTest++-1.3
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) $(IntermediateDirectory)/animaciones.c$(ObjectSuffix) $(IntermediateDirectory)/grafica.c$(ObjectSuffix) 
 
 
 
@@ -91,7 +91,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.c$(ObjectSuffix): main.c $(IntermediateDirectory)/main.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/sergi/Downloads/Projecte_Base_Windows/Practica2/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/main.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.c$(ObjectSuffix) -MF$(IntermediateDirectory)/main.c$(DependSuffix) -MM "main.c"
 
@@ -99,7 +99,7 @@ $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) "main.c"
 
 $(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix): LS_allegro.c $(IntermediateDirectory)/LS_allegro.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/sergi/Downloads/Projecte_Base_Windows/Practica2/LS_allegro.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/LS_allegro.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/LS_allegro.c$(DependSuffix): LS_allegro.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) -MF$(IntermediateDirectory)/LS_allegro.c$(DependSuffix) -MM "LS_allegro.c"
 
@@ -107,12 +107,28 @@ $(IntermediateDirectory)/LS_allegro.c$(PreprocessSuffix): LS_allegro.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/LS_allegro.c$(PreprocessSuffix) "LS_allegro.c"
 
 $(IntermediateDirectory)/loadRanking.c$(ObjectSuffix): loadRanking.c $(IntermediateDirectory)/loadRanking.c$(DependSuffix)
-	$(CC) $(SourceSwitch) "C:/Users/sergi/Downloads/Projecte_Base_Windows/Practica2/loadRanking.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) $(IncludePath)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/loadRanking.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/loadRanking.c$(DependSuffix): loadRanking.c
 	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) -MF$(IntermediateDirectory)/loadRanking.c$(DependSuffix) -MM "loadRanking.c"
 
 $(IntermediateDirectory)/loadRanking.c$(PreprocessSuffix): loadRanking.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/loadRanking.c$(PreprocessSuffix) "loadRanking.c"
+
+$(IntermediateDirectory)/animaciones.c$(ObjectSuffix): animaciones.c $(IntermediateDirectory)/animaciones.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/animaciones.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/animaciones.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/animaciones.c$(DependSuffix): animaciones.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/animaciones.c$(ObjectSuffix) -MF$(IntermediateDirectory)/animaciones.c$(DependSuffix) -MM "animaciones.c"
+
+$(IntermediateDirectory)/animaciones.c$(PreprocessSuffix): animaciones.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/animaciones.c$(PreprocessSuffix) "animaciones.c"
+
+$(IntermediateDirectory)/grafica.c$(ObjectSuffix): grafica.c $(IntermediateDirectory)/grafica.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/grafica.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/grafica.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/grafica.c$(DependSuffix): grafica.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/grafica.c$(ObjectSuffix) -MF$(IntermediateDirectory)/grafica.c$(DependSuffix) -MM "grafica.c"
+
+$(IntermediateDirectory)/grafica.c$(PreprocessSuffix): grafica.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/grafica.c$(PreprocessSuffix) "grafica.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

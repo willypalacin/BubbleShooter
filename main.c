@@ -1,32 +1,55 @@
 #include <stdio.h>
 #include "LS_allegro.h"
+#include "grafica.h"
+#include "datos.h"
 #include "loadRanking.h"
 
 int main(void){
+	Partida partida[1];
+	int opcion;
+	do {
 	
-	int nSortir = 0;
-	
-	//Inicialitzem Allegro
-	LS_allegro_init(800,600,"LS Dungeon");
-	
-	//Bucle infinit del joc
-	while(!nSortir){
+		GRAFICA_mostrarMenu();
+		opcion = GRAFICA_elegirOpcion();
+		int nSortir = 0;
 		
-		//Escoltem el teclat esperant la tecla ESC
-		if(LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
-			nSortir = 1;
+		switch (opcion) {
+			case 1:
+				do {
+					GRAFICA_pedirNombre(partida);
+				} while (strlen(partida[0].jugador.nombre) >= 20);
+				
+				LS_allegro_init(1024,600,"LS Dungeon");
+				
+				//Inicializaremos color y posicion de las bolas de reserva
+				GRAFICA_inicializarBolasReserva (partida);
+				
+				//Iniciaremos la posicion del disparador y de la bola del disparador.
+				
+				//GRAFICA_inicializarDisparador(partida);
+				
+				while(!nSortir){
+					GRAFICA_pintarPantalla(partida);
+					
+		
+				
+					if(LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
+						nSortir = 1;
+					}
+					
+				
+					//Pintem la pantalla de la finestra gràfica
+					LS_allegro_clear_and_paint(BLACK);
+				}
+				LS_allegro_exit();
+				
+		
 		}
 		
-		//Donem l'ordre d'escriure el text de benvinguda
-		al_draw_textf(LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE),140,100,0,"%s","Benvingut a Allegro! Prem ESC per sortir...");
-	
-		//Pintem la pantalla de la finestra gràfica
-		LS_allegro_clear_and_paint(BLACK);
-	}
+	} while (opcion != 5);
 	
 	
-	//Tanquem la finestra gràfica
-	LS_allegro_exit();
+	
 	
 	
 	
