@@ -77,6 +77,9 @@ int GRAFICA_elegirOpcion() {
 	else {
 		opcion = 6;
 	}
+	if (opcion < 1 || opcion > 5) {
+		printf("Error, opcion solo puede valer un numero del 1 al 5");
+	}
 	
 	return opcion;
 }
