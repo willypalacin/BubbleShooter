@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\Practica2.workspace">
-  <int Value="0" Name="m_selectedTab"/>
+  <int Value="3" Name="m_selectedTab"/>
   <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\Practica2.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.c" Name="FileName"/>
-      <int Value="50" Name="FirstVisibleLine"/>
-      <int Value="62" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="32"/>
-        <IntVectorItem Value="73"/>
-        <IntVectorItem Value="82"/>
-        <IntVectorItem Value="89"/>
-        <IntVectorItem Value="99"/>
-        <IntVectorItem Value="113"/>
-        <IntVectorItem Value="150"/>
-      </IntVector>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="15" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\main.c" Name="FileName"/>
-      <int Value="22" Name="FirstVisibleLine"/>
-      <int Value="33" Name="CurrentLine"/>
+      <int Value="43" Name="FirstVisibleLine"/>
+      <int Value="62" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\datos.h" Name="FileName"/>
-      <int Value="34" Name="FirstVisibleLine"/>
-      <int Value="40" Name="CurrentLine"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.c" Name="FileName"/>
+      <int Value="19" Name="FirstVisibleLine"/>
+      <int Value="22" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="11" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
