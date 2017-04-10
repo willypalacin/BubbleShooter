@@ -11,6 +11,62 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 	return time0;
 	
 }
+int esperarCeroUnSegundo(Partida partida[1]) {
+	int time5; 
+	int time6;
+	int si;
+	time5 = (float) clock();
+	time6 = (float) clock();
+	while ((time6-time5)/(float)CLOCKS_PER_SEC <= 0.1) {
+		time6 = (float) clock();
+		
+		
+		
+	}
+	si = 1;
+	return si;
+	
+	
+}
+
+void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y) {
+	
+	while(partida[0].disparador.bola.pos_y >= pos_y) {
+		GRAFICA_pintarPantalla(partida);
+		partida[0].disparador.bola.pos_y = partida[0].disparador.bola.pos_y - 1;
+		
+		pintarDisparador(partida);
+		LS_allegro_clear_and_paint(BLACK);
+		printf("%d\n",partida[0].disparador.bola.pos_y);
+		
+	}
+
+}
+
+
+
+void ANIMACIONES_dispararBola(Partida partida[1]) {
+	int i, j;
+	int hay_bola;
+	int pos_y;
+	//Averiguo en que casilla está la bola
+	j = (partida[0].disparador.bola.pos_x - 50) / 60;
+	i = 8;
+	while (i >= 0 || hay_bola == 0) {
+		if (partida[0].casilla[i][j].ok_bola == 1) {
+			//Guardas la posicion hasta la que tienes que llevar la bola
+			pos_y = partida[0].casilla[i+1][j].bola.pos_y;
+			hay_bola = 1;
+			
+		}
+		i--;
+		
+	
+	}
+	ANIMACIONES_llevarBolaHastaPosicion(partida, pos_y);
+	
+}
+
 void ANIMACIONES_restablecerTiempoNivel(Partida partida[1]) {
 	
 	//restablecerlo a cero y subir nivel	

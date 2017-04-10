@@ -72,6 +72,7 @@ void GRAFICA_generarFilaBola1(Partida partida[1]) {
 	
 
 void GRAFICA_pedirNombre(Partida partida[1]) {
+	
 	printf("%s","Introduzca el nombre: ");
 	gets(partida[0].jugador.nombre);
 	if (strlen(partida[0].jugador.nombre) > 20) {
@@ -80,6 +81,7 @@ void GRAFICA_pedirNombre(Partida partida[1]) {
 	
 	
 }
+
 void pintarBolaReserva(Partida partida[1]) {
 	int i;
 	for (i = 0; i < 4; i++) {
@@ -109,7 +111,6 @@ void pintarBolas(Partida partida[1]) {
 	}
 
 }
-
 
 void GRAFICA_inicializarDisparador(Partida partida[1]) {
 	partida[0].disparador.pos_x = 385;

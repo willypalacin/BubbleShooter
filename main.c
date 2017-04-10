@@ -9,6 +9,7 @@
 int main(void){
 	Partida partida[1];
 	int opcion;
+	int pos_y;
 	float time0, time1;
 	
 	do {
@@ -45,18 +46,23 @@ int main(void){
 				
 				
 				while(!nSortir){
-					GRAFICA_pintarPantalla(partida);
+					
 					
 					time1 = (float) clock();
 					
 					//Cuenta segundos de uno en uno
-					time0 = ANIMACIONES_aumentarSegundos(time0, time1,partida);
+					time0 = ANIMACIONES_aumentarSegundos(time0, time1, partida);
 					
 					if (partida[0].tiempo.tiempo_nivel >= 31) {
 						ANIMACIONES_restablecerTiempoNivel(partida);
 						ANIMACIONES_bajaFila(partida);
 						GRAFICA_generarFilaBola1(partida);
 					}
+					
+					if (LS_allegro_key_pressed(ALLEGRO_KEY_SPACE) == 1) {
+						ANIMACIONES_dispararBola(partida);
+						
+					} 
 					
 					if (LS_allegro_key_pressed(ALLEGRO_KEY_A) == 1) {
 						ANIMACIONES_moverDisparadorIzquierda(partida);
@@ -71,6 +77,7 @@ int main(void){
 						nSortir = 1;
 					}
 					
+					GRAFICA_pintarPantalla(partida);
 				
 					//Pintem la pantalla de la finestra gràfica
 					LS_allegro_clear_and_paint(BLACK);

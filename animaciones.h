@@ -2,12 +2,18 @@
 #define _ANIMACIONES_H_
 
 #include <time.h>
+#include "grafica.h"
+#include "LS_allegro.h"
 #include <datos.h>
+
 
 float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1]);
 void ANIMACIONES_restablecerTiempoNivel(Partida partida[1]);
 void ANIMACIONES_moverDisparadorIzquierda(Partida partida[1]);
 void ANIMACIONES_moverDisparadorDerecha(Partida partida[1]);
+void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y);
+void ANIMACIONES_dispararBola(Partida partida[1]);
 void ANIMACIONES_bajaFila(Partida partida[1]);
+
 
 #endif
