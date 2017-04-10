@@ -57,20 +57,60 @@ void GRAFICA_generarMatriz(Partida partida[1]) {
 
 void GRAFICA_generarFilaBola1(Partida partida[1]) {
 	int i, j;
-	i = 0;
-	partida[0].casilla[0][0].bola.color = GRAFICA_colorRandom();
-	partida[0].casilla[0][0].ok_bola = 1;
+	int centro_x;
+	int centro_y = 35;
 	
-	for (j = 1; j < 12; j++) {
-		do {
+	centro_x = 50;
+	i = 0;
+	int vueltas = 0;
+		
+	for (j = 0; j < 12; j++) {
+		
+		if (j == 0 && partida[0].casilla[1][j].ok_bola == 0) {
+			partida[0].casilla[i][j].bola.pos_x = centro_x;
+			centro_x = centro_x + 60;
+			partida[0].casilla[i][j].bola.pos_y = centro_y;
 			partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
-		//No generamos bolas del mismo color para posiciones adyacentes
-		} while (partida[0].casilla[i][j-1].bola.color == partida[0].casilla[i][j].bola.color);
-		partida[0].casilla[i][j].ok_bola = 1;
+			partida[0].casilla[0][j].ok_bola = 1;
+			
+		}
+		else {
+			if (partida[0].casilla[1][j].ok_bola == 1) {
+			
+				do {
+					partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
+						
+						if (partida[0].casilla[0][j].bola.color != partida[0].casilla[1][j].bola.color && partida[0].casilla[0][j].bola.color != partida[0].casilla[i][j-1].bola.color ) {
+							partida[0].casilla[0][j].ok_bola = 1;
+							partida[0].casilla[0][j].bola.pos_x = centro_x;
+							partida[0].casilla[0][j].bola.pos_y = centro_y;
+							centro_x = centro_x + 60;
+							
+							
+						}
+				
+					} while(partida[0].casilla[i][j].bola.color == partida[0].casilla[i][j-1].bola.color || partida[0].casilla[i][j].bola.color == partida[0].casilla[i +1][j].bola.color);
+			}
+			else {
+				do {
+					partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
+						
+						if (partida[0].casilla[i][j].bola.color != partida[0].casilla[i][j-1].bola.color) {
+							partida[0].casilla[0][j].ok_bola = 1;
+							partida[0].casilla[i][j].bola.pos_x = centro_x;
+							partida[0].casilla[i][j].bola.pos_y = centro_y;
+							centro_x = centro_x + 60;
+							
+						}
+				
+					} while(partida[0].casilla[i][j-1].bola.color == partida[0].casilla[i][j].bola.color);
+				
+			}
+		}
+		
 	}
 }
 	
-
 void GRAFICA_pedirNombre(Partida partida[1]) {
 	
 	printf("%s","Introduzca el nombre: ");
