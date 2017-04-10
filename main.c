@@ -46,14 +46,17 @@ int main(void){
 				
 				while(!nSortir){
 					GRAFICA_pintarPantalla(partida);
-					printf ("%d\n", partida[0].tiempo.tiempo_nivel);
+					
 					time1 = (float) clock();
 					
 					//Cuenta segundos de uno en uno
 					time0 = ANIMACIONES_aumentarSegundos(time0, time1,partida);
 					
-					//Reestablecer el tiempo del nivel cada 30 segundos
-					ANIMACIONES_restablecerTiempoNivel(partida);
+					if (partida[0].tiempo.tiempo_nivel >= 31) {
+						ANIMACIONES_restablecerTiempoNivel(partida);
+						ANIMACIONES_bajaFila(partida);
+						GRAFICA_generarFilaBola1(partida);
+					}
 					
 					if (LS_allegro_key_pressed(ALLEGRO_KEY_A) == 1) {
 						ANIMACIONES_moverDisparadorIzquierda(partida);

@@ -6,7 +6,7 @@
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\main.c" Name="FileName"/>
       <int Value="43" Name="FirstVisibleLine"/>
-      <int Value="62" Name="CurrentLine"/>
+      <int Value="56" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
@@ -19,15 +19,20 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.c" Name="FileName"/>
-      <int Value="19" Name="FirstVisibleLine"/>
+      <int Value="0" Name="FirstVisibleLine"/>
       <int Value="22" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
+      <IntVector Name="CollapsedFolds">
+        <IntVectorItem Value="2"/>
+        <IntVectorItem Value="13"/>
+        <IntVectorItem Value="35"/>
+        <IntVectorItem Value="46"/>
+      </IntVector>
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="11" Name="CurrentLine"/>
+      <int Value="10" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
