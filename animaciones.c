@@ -5,11 +5,27 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 		time0 = (float) clock();
 		partida[0].tiempo.tiempo_partida++;
 		//Variable que cada 30 segundos se pondrá a cero
-		partida[0].tiempo.tiempo_nivel++;				
+		partida[0].tiempo.tiempo_nivel++;
+		
+		partida[0].tiempo.segs++;
 					
 	}
 	return time0;
 	
+}
+int ANIMACIONES_gameOver(Partida partida[1]) {
+	
+	int i = 9;
+	int j;
+	int game_over = 0;
+	for (j = 0; j < 11; j++) {
+		if (partida[0].casilla[i][j].ok_bola == 1) {
+			game_over = 1;
+		}
+		
+	}
+	
+return game_over;
 }
 
 int esperarCeroUnSegundo(Partida partida[1]) {
@@ -32,6 +48,7 @@ int esperarCeroUnSegundo(Partida partida[1]) {
 
 void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, int j) {
 	
+	
 	while(partida[0].disparador.bola.pos_y >= pos_y) {
 		GRAFICA_pintarPantalla(partida);
 		partida[0].disparador.bola.pos_y = partida[0].disparador.bola.pos_y - 4;
@@ -41,7 +58,7 @@ void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, i
 		
 		
 	}
-	
+	//	if(i==0) {}
 		partida[0].casilla[i+2][j].bola.color = partida[0].disparador.bola.color;
 		partida[0].casilla[i+2][j].ok_bola = 1;
 	
@@ -49,11 +66,12 @@ void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, i
 }
 
 void ANIMACIONES_eliminarBola (Partida partida[1], int * u, int * w) {
+
 	int i, j;
 	int contador = 0;
 	
 	j = *w;
-	
+	//Lo que hago aqui es leer toda la columna en la que esta la posicion de x y ver si hay bolas repetidas
 	for (i = 8; i >= 1; i--) {
 		if (partida[0].casilla[i-1][j].ok_bola == 1 && partida[0].casilla[i][j].ok_bola == 1 && partida[0].casilla[i - 1][j].bola.color == partida[0].casilla[i][j].bola.color) {
 			contador++;
@@ -62,6 +80,8 @@ void ANIMACIONES_eliminarBola (Partida partida[1], int * u, int * w) {
 			partida[0].casilla[*u + 2][j].ok_bola = 1;
 		}	
 	}
+	//Lo mismo que en el anterior pero en vez de filas con columnas
+	//El i+2 viene porque se pasa -2 ya que viene de otra funcion
 	i = *u;
 	for (j = 1; j <= 11; j++) {
 		if (partida[0].casilla[i + 2][j].ok_bola == 1 && partida[0].casilla[i+2][j-1].ok_bola == 1 && partida[0].casilla[i+2][j].bola.color == partida[0].casilla[i+2][j -1].bola.color) {
@@ -71,55 +91,13 @@ void ANIMACIONES_eliminarBola (Partida partida[1], int * u, int * w) {
 			partida[0].casilla[i+2][*w].ok_bola = 1;
 		}	
 	}
-	if(contador > 0) {
+	
+	if (contador > 0) {
 		partida[0].casilla[*u + 2][*w].ok_bola = 0;
 	
 		
 	}
-	/*i = *u;
-	j = *w;
 	
-	if (j == 0) {
-		if (partida[0].casilla[i+2][j+1].ok_bola == 1 && partida[0].casilla[i+2][j].bola.color == partida[0].casilla[i+2][j+1].bola.color ) {
-			partida[0].casilla[i+2][j].ok_bola = 0;
-			partida[0].casilla[i+2][j +1].ok_bola = 0;
-		}
-		if (partida[0].casilla[i+1][j].ok_bola == 1 && partida[0].casilla[i+1][j].bola.color == partida[0].casilla[i+2][j].bola.color ) {
-			partida[0].casilla[i+1][j].ok_bola = 0;
-			partida[0].casilla[i+2][j].ok_bola = 0;
-		}
-	}
-	if (j == 11) {
-		if (partida[0].casilla[i+2][j - 1].ok_bola == 1 && partida[0].casilla[i+2][j].bola.color == partida[0].casilla[i+2][j - 1].bola.color) {
-			partida[0].casilla[i+2][j].ok_bola = 0;
-			partida[0].casilla[i+2][j - 1].ok_bola = 0;
-		}
-		if (partida[0].casilla[i+1][j].ok_bola == 1 && partida[0].casilla[i+1][j].bola.color == partida[0].casilla[i+2][j].bola.color) {
-			partida[0].casilla[i+1][j].ok_bola = 0;
-			partida[0].casilla[i+2][j].ok_bola = 0;
-		}
-	}
-	
-	if (j != 11 && j != 0) {
-		
-		if (partida[0].casilla[i+2][j - 1].ok_bola == 1 && partida[0].casilla[i+2][j].bola.color == partida[0].casilla[i+2][j - 1].bola.color) {
-			partida[0].casilla[i+2][j].ok_bola = 0;
-			partida[0].casilla[i+2][j - 1].ok_bola = 0;
-		}
-		
-		if (partida[0].casilla[i+1][j].ok_bola == 1 && partida[0].casilla[i+1][j].bola.color == partida[0].casilla[i+2][j].bola.color) {
-			partida[0].casilla[i+1][j].ok_bola = 0;
-			partida[0].casilla[i+2][j].ok_bola = 0;
-		}
-		
-		if (partida[0].casilla[i+2][j+1].ok_bola == 1 && partida[0].casilla[i+2][j].bola.color == partida[0].casilla[i+2][j+1].bola.color ) {
-			partida[0].casilla[i+2][j].ok_bola = 0;
-			partida[0].casilla[i+2][j +1].ok_bola = 0;
-		}
-	}
-	
-	
-	*/	
 }
 
 void ANIMACIONES_dispararBola(Partida partida[1], int * u, int * w) {
@@ -139,7 +117,8 @@ void ANIMACIONES_dispararBola(Partida partida[1], int * u, int * w) {
 		}
 		if (partida[0].casilla[0][j].ok_bola == 0 && i == 0) {
 			//Guardas la posicion hasta la que tienes que llevar la bola
-			pos_y = partida[0].casilla[i][j].bola.pos_y;
+			pos_y = partida[0].casilla[i][j].bola.pos_y -1;
+			i--;
 			hay_bola = 1;
 			
 		}
@@ -157,7 +136,9 @@ void ANIMACIONES_restablecerTiempoNivel(Partida partida[1]) {
 	//restablecerlo a cero y subir nivel	
 	partida[0].tiempo.tiempo_nivel = 1;	
 	partida[0].jugador.nivel++;
+	partida[0].nivel.aum_velocidad = partida[0].nivel.aum_velocidad + 2;
 	
+	partida[0].nivel.tiempo_nivel = 64/(partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad);
 
 }
 
@@ -183,10 +164,9 @@ void ANIMACIONES_bajaFila(Partida partida[1]) {
 	int i, j;
 	for (i = 8; i >= 0 ; i--) {
 		for(j = 11; j >= 0; j--) {
-			if (partida[0].casilla[i][j].ok_bola == 1) {
-				partida[0].casilla[i + 1][j].bola.color = partida[0].casilla[i][j].bola.color;
-				partida[0].casilla[i + 1][j].ok_bola = 1;
-			}
+			partida[0].casilla[i + 1][j].bola.color = partida[0].casilla[i][j].bola.color;
+			partida[0].casilla[i + 1][j].ok_bola = partida[0].casilla[i][j].ok_bola;
+			
 		}
 	}
 		

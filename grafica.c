@@ -30,6 +30,19 @@ void GRAFICA_inicializarBolasReserva (Partida partida[1]) {
 	
 }
 
+void GRAFICA_inicializarVelocidades(Partida partida[1]) {
+	partida[0].tiempo.segs = 0;
+	partida[0].nivel.vel_inicial = 3;
+	partida[0].nivel.aum_velocidad = 0,2;
+	partida[0].nivel.tiempo_nivel = 64/(partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad);	
+}
+
+void GRAFICA_pintarGameOver(Partida partida[1]) {
+	al_draw_filled_rectangle (0, 0, 1023, 600, LS_allegro_get_color(BLACK));
+	al_draw_textf (LS_allegro_get_font(EXTRA_LARGE),LS_allegro_get_color(RED), 320, 300, 0,"%s","GAME OVER");
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(RED), 370, 380, 0,"%s","Pulse esc");
+	LS_allegro_clear_and_paint(BLACK);
+}
 void GRAFICA_mostrarMenu() {
 	printf("Bienvenido a LSBooble\n");
 	printf("\n\t1. Nueva Partida\n\t2. Escojer nivel\n\t3. Cargar ranking\n\t4. Ver Ranking\n\t5. Salir\n\tOpcion: ");
@@ -166,6 +179,25 @@ void GRAFICA_inicializarDisparador(Partida partida[1]) {
 
 }
 
+void mostrarTiempoTotal(Partida partida[1]) {
+	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 782,	300, 0,"%s","TEMPS TOTAL");
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 870, 340, 0,"%d", partida[0].tiempo.tiempo_partida / 60);
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 899, 340, 0,"%c", ':');
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 910, 340, 0,"%d", partida[0].tiempo.tiempo_partida % 60);
+
+}
+
+void mostrarNivel (Partida partida[1]) {
+	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 845, 110, 0,"%s","NIVEL");
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 885, 149, 0,"%d", partida[0].jugador.nivel);
+	
+	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 780, 190, 0,"%s","Temps Nivel");
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 870, 240, 0,"%d", partida[0].tiempo.tiempo_nivel / 60);
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 882, 240, 0,"%c", ':');
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 890, 240, 0,"%d", partida[0].tiempo.tiempo_nivel % 60);
+}
+
+
 void GRAFICA_pintarPantalla(Partida partida[1]) {
 	//Pintamos rectángulo principal y secundario
 	al_draw_filled_rectangle (0, 0, 770, 600, LS_allegro_get_color(LIGHT_BLUE));
@@ -182,6 +214,8 @@ void GRAFICA_pintarPantalla(Partida partida[1]) {
 	pintarBolaReserva(partida);
 	pintarDisparador(partida);
 	pintarBolas(partida);
+	mostrarTiempoTotal(partida);
+	mostrarNivel(partida);
 	
 	
 }

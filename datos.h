@@ -26,6 +26,7 @@ typedef struct {
 typedef struct {
 	int tiempo_nivel;
 	int tiempo_partida;
+	int segs;
 	
 } Tiempo;
 

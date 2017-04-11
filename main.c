@@ -9,7 +9,7 @@
 int main(void){
 	Partida partida[1];
 	int opcion;
-	int pos_y;
+	
 	int u;
 	int w;
 	float time0, time1;
@@ -37,6 +37,8 @@ int main(void){
 				//Inicializaremos color y posicion de las bolas de reserva
 				GRAFICA_inicializarBolasReserva (partida);
 				
+				GRAFICA_inicializarVelocidades(partida);
+				
 				//Iniciaremos la posicion del disparador y de la bola del disparador.
 				GRAFICA_inicializarDisparador(partida);
 				
@@ -57,13 +59,15 @@ int main(void){
 					
 					if (partida[0].tiempo.tiempo_nivel >= 31) {
 						ANIMACIONES_restablecerTiempoNivel(partida);
+					}
+					if (partida[0].tiempo.segs % 65 >= partida[0].nivel.tiempo_nivel) {
+						partida[0].tiempo.segs = 0;
 						ANIMACIONES_bajaFila(partida);
 						GRAFICA_generarFilaBola1(partida);
 					}
 					
 					if (LS_allegro_key_pressed(ALLEGRO_KEY_SPACE) == 1) {
 						ANIMACIONES_dispararBola(partida, &u, &w);
-						printf("%d %d\n", u, w);
 						ANIMACIONES_eliminarBola (partida, &u, &w);
 						ANIMACIONES_cambioBolaReserva(partida);
 						
@@ -77,6 +81,12 @@ int main(void){
 					if (LS_allegro_key_pressed(ALLEGRO_KEY_D) == 1) {
 						 ANIMACIONES_moverDisparadorDerecha(partida);
 					} 
+					
+					if (ANIMACIONES_gameOver(partida) == 1) {
+						GRAFICA_pintarGameOver(partida);
+						
+						
+					}
 
 				
 					if (LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
