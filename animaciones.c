@@ -14,11 +14,11 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 	
 }
 
-int ANIMACIONES_hayGameOver(int game_over,Partida partida[1]) {
+void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1]) {
 	if (ANIMACIONES_gameOver(partida) == 1) {
-		game_over = 1;
+		*game_over = 1;
 	}
-	return game_over;
+	
 }
 void ANIMACIONES_pulsasA(Partida partida[1]) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_A) == 1) {
@@ -26,6 +26,8 @@ void ANIMACIONES_pulsasA(Partida partida[1]) {
 	} 
 					
 }
+
+
 void ANIMACIONES_pulsasD(Partida partida[1]) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_D) == 1) {
 		ANIMACIONES_moverDisparadorDerecha(partida);
@@ -59,24 +61,24 @@ void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w) {
 	} 	
 	
 }
-int ANIMACIONES_pulsasESC(int nSortir) {
+void ANIMACIONES_pulsasESC(int * nSortir) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
-		nSortir = 1;
+		*nSortir = 1;
 	}
-	return nSortir;
+	
 }
-int ANIMACIONES_pulsaP(int pausa) {
+void ANIMACIONES_pulsaP(int * pausa) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_P) == 1) {
-		if (pausa == 0) {
-			pausa = 1;
+		if (*pausa == 0) {
+			*pausa = 1;
 						
 		} 
 		else {
-			pausa = 0;
+			*pausa = 0;
 		}
 						
 	}	
-	return pausa;
+	
 }
 int ANIMACIONES_restablecerPausa (int pausa) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_P) == 1) {
@@ -274,4 +276,16 @@ void ANIMACIONES_moverDisparadorIzquierda(Partida partida[1]) {
 		partida[0].disparador.pos_x	= partida[0].disparador.pos_x + 60;
 		partida[0].disparador.bola.pos_x = partida[0].disparador.bola.pos_x + 60;
 	}
+}
+
+void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_over,  int * nSortir,  int * pausa) {
+	ANIMACIONES_treintaSegundos(partida);
+	ANIMACIONES_tiempoDeBajarFila(partida);
+	ANIMACIONES_pulsasEspacio(partida, u, w);
+	ANIMACIONES_pulsasA(partida);
+	ANIMACIONES_pulsasD(partida);
+				
+	ANIMACIONES_pulsasESC(nSortir);
+	ANIMACIONES_hayGameOver(game_over, partida);
+	ANIMACIONES_pulsaP(pausa);
 }

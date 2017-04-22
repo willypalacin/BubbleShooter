@@ -29,14 +29,8 @@ int main(void){
 					//Cuenta segundos de uno en uno
 					time0 = ANIMACIONES_aumentarSegundos(time0, time1, partida);
 					
-					ANIMACIONES_treintaSegundos(partida);
-					ANIMACIONES_tiempoDeBajarFila(partida);
-					ANIMACIONES_pulsasEspacio(partida, &u, &w);
-					ANIMACIONES_pulsasA(partida);
-					ANIMACIONES_pulsasD(partida);
-					 
-					game_over = ANIMACIONES_hayGameOver(game_over,partida);
-					pausa = ANIMACIONES_pulsaP(pausa);
+					ANIMACIONES_movimientos(partida, &u, &w, &game_over, &nSortir, &pausa);
+					
 					
 					while (pausa == 1) {
 						GRAFICA_pintarPausa();
@@ -45,7 +39,7 @@ int main(void){
 						pausa = ANIMACIONES_restablecerPausa(pausa);
 					}
 				
-					nSortir = ANIMACIONES_pulsasESC(nSortir);
+					
 					GRAFICA_pintarPantalla(partida, game_over);
 				
 					//Pintem la pantalla de la finestra gràfica
