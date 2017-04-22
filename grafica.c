@@ -10,6 +10,24 @@ int GRAFICA_colorRandom() {
 	return num;
 }
 
+void GRAFICA_pintarPausa() {
+	al_draw_filled_rectangle (50, 200, 50, 300, LS_allegro_get_color(BLACK));
+	al_draw_textf (LS_allegro_get_font(EXTRA_LARGE),LS_allegro_get_color(WHITE), 300, 250, 0,"%s","PAUSA");
+	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 300, 300, 0,"%s","Pulse p");
+	LS_allegro_clear_and_paint(BLUE);	
+	
+}
+
+void GRAFICA_verRanking(Ranking ranking[1]) {
+	int i;
+	for (i = 0; i < 10; i++) {
+		printf("%s\n", ranking[0].acPlayers[i]);
+	
+	}
+
+}
+
+
 void GRAFICA_inicializarBolasReserva (Partida partida[1]) {
 	
 	int pos_x, pos_y, i;	
@@ -41,7 +59,7 @@ void GRAFICA_pintarGameOver(Partida partida[1]) {
 	al_draw_filled_rectangle (0, 0, 1023, 600, LS_allegro_get_color(BLACK));
 	al_draw_textf (LS_allegro_get_font(EXTRA_LARGE),LS_allegro_get_color(RED), 320, 300, 0,"%s","GAME OVER");
 	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(RED), 370, 380, 0,"%s","Pulse esc");
-	LS_allegro_clear_and_paint(BLACK);
+	
 }
 void GRAFICA_mostrarMenu() {
 	printf("Bienvenido a LSBooble\n");
@@ -80,6 +98,7 @@ void GRAFICA_generarFilaBola1(Partida partida[1]) {
 	for (j = 0; j < 12; j++) {
 		
 		if (j == 0 && partida[0].casilla[1][j].ok_bola == 0) {
+			//Comprimir linea de código en funcion.
 			partida[0].casilla[i][j].bola.pos_x = centro_x;
 			centro_x = centro_x + 60;
 			partida[0].casilla[i][j].bola.pos_y = centro_y;
@@ -94,12 +113,11 @@ void GRAFICA_generarFilaBola1(Partida partida[1]) {
 					partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
 						
 						if (partida[0].casilla[0][j].bola.color != partida[0].casilla[1][j].bola.color && partida[0].casilla[0][j].bola.color != partida[0].casilla[i][j-1].bola.color ) {
+							//COMPRIMIR ESTA LINEA DE CODIGO EN FUNCION
 							partida[0].casilla[0][j].ok_bola = 1;
 							partida[0].casilla[0][j].bola.pos_x = centro_x;
 							partida[0].casilla[0][j].bola.pos_y = centro_y;
 							centro_x = centro_x + 60;
-							
-							
 						}
 				
 					} while(partida[0].casilla[i][j].bola.color == partida[0].casilla[i][j-1].bola.color || partida[0].casilla[i][j].bola.color == partida[0].casilla[i +1][j].bola.color);
@@ -109,6 +127,7 @@ void GRAFICA_generarFilaBola1(Partida partida[1]) {
 					partida[0].casilla[i][j].bola.color = GRAFICA_colorRandom();
 						
 						if (partida[0].casilla[i][j].bola.color != partida[0].casilla[i][j-1].bola.color) {
+							//COMPRIMIR LINEA DE CODIGO EN FUNCION
 							partida[0].casilla[0][j].ok_bola = 1;
 							partida[0].casilla[i][j].bola.pos_x = centro_x;
 							partida[0].casilla[i][j].bola.pos_y = centro_y;
@@ -125,12 +144,13 @@ void GRAFICA_generarFilaBola1(Partida partida[1]) {
 }
 	
 void GRAFICA_pedirNombre(Partida partida[1]) {
-	
-	printf("%s","Introduzca el nombre: ");
-	gets(partida[0].jugador.nombre);
-	if (strlen(partida[0].jugador.nombre) > 20) {
-		printf("Error, el tamano maximo del nombre ha de ser de 20 caracteres\n\n");
-	}
+	do{
+		printf("%s","Introduzca el nombre: ");
+		gets(partida[0].jugador.nombre);
+		if (strlen(partida[0].jugador.nombre) > 20) {
+			printf("Error, el tamano maximo del nombre ha de ser de 20 caracteres\n\n");
+		}
+	} while (strlen(partida[0].jugador.nombre) >= 20);
 	
 	
 }
@@ -197,8 +217,26 @@ void mostrarNivel (Partida partida[1]) {
 	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 890, 240, 0,"%d", partida[0].tiempo.tiempo_nivel % 60);
 }
 
+void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over) {
+	*game_over = 0;
+	*pausa = 0;
+	partida[0].tiempo.tiempo_partida = 1;
+	partida[0].tiempo.tiempo_nivel = 1;	
+	partida[0].jugador.nivel = 1;
+	
+	//Inicializaremos color y posicion de las bolas de reserva
+	GRAFICA_inicializarBolasReserva (partida);
+	GRAFICA_inicializarVelocidades(partida);
+	//Iniciaremos la posicion del disparador y de la bola del disparador.
+	GRAFICA_inicializarDisparador(partida);
+	//Generamos Matriz de casillas
+	GRAFICA_generarMatriz(partida);
+	//Generamos la primera fila de la matriz
+	GRAFICA_generarFilaBola1(partida);
+	
+}
 
-void GRAFICA_pintarPantalla(Partida partida[1]) {
+void GRAFICA_pintarPantalla(Partida partida[1],int game_over) {
 	//Pintamos rectángulo principal y secundario
 	al_draw_filled_rectangle (0, 0, 770, 600, LS_allegro_get_color(LIGHT_BLUE));
 	al_draw_filled_rectangle (770, 550, 1024, 600, LS_allegro_get_color(LIGHT_BLUE));
@@ -216,11 +254,14 @@ void GRAFICA_pintarPantalla(Partida partida[1]) {
 	pintarBolas(partida);
 	mostrarTiempoTotal(partida);
 	mostrarNivel(partida);
+	if(game_over == 1) {
+		GRAFICA_pintarGameOver(partida);
+		
+	}
+	
 	
 	
 }
-
-
 
 	
 int GRAFICA_elegirOpcion() {

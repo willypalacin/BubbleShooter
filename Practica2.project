@@ -30,6 +30,7 @@
     <File Name="grafica.c"/>
     <File Name="grafica.h"/>
     <File Name="datos.h"/>
+    <File Name="ranking.txt"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

@@ -1,13 +1,15 @@
 #ifndef _DATOS_H_
 #define _DATOS_H_
 
-
+#define ERROR_CARGA_RANKING "Ha habido un error al cargar el ranking\n"
+#define EXITO_RANKING "Ranking cargado con exito\n"
 
 typedef struct {
 	int aum_velocidad;
 	int vel_inicial;
 	float tiempo_nivel;
 } Nivel;
+
 
 typedef struct {
 	char nombre[100];
@@ -17,10 +19,10 @@ typedef struct {
 } Jugador;
 
 typedef struct {
-		char acPlayers[10][20];
-		int niveles[10];
-		int minutos[10];
-		int segundos[10];
+	char acPlayers[10][21];
+	int niveles[10];
+	int minutos[10];
+	int segundos[10];
 } Ranking; 
 
 typedef struct {
@@ -57,6 +59,7 @@ typedef struct {
 	Bola bola[4];
 	Nivel nivel;	
 } Partida;
+
 
 
 

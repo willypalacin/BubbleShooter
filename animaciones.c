@@ -13,12 +13,90 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 	return time0;
 	
 }
+
+int ANIMACIONES_hayGameOver(int game_over,Partida partida[1]) {
+	if (ANIMACIONES_gameOver(partida) == 1) {
+		game_over = 1;
+	}
+	return game_over;
+}
+void ANIMACIONES_pulsasA(Partida partida[1]) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_A) == 1) {
+		ANIMACIONES_moverDisparadorIzquierda(partida);
+	} 
+					
+}
+void ANIMACIONES_pulsasD(Partida partida[1]) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_D) == 1) {
+		ANIMACIONES_moverDisparadorDerecha(partida);
+	}
+
+}
+
+void ANIMACIONES_treintaSegundos(Partida partida[1]) {
+	if (partida[0].tiempo.tiempo_nivel >= 31) {
+		ANIMACIONES_restablecerTiempoNivel(partida);
+	}
+	
+}
+
+void ANIMACIONES_tiempoDeBajarFila(Partida partida[1]) {
+	
+	if (partida[0].tiempo.segs % 60  >= partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad) {
+		partida[0].tiempo.segs = 0;
+		ANIMACIONES_bajaFila(partida);
+		GRAFICA_generarFilaBola1(partida);
+	}	
+}
+
+void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_SPACE) == 1) {
+		ANIMACIONES_dispararBola(partida, u, w);
+		ANIMACIONES_eliminarBola (partida, u, w);
+		ANIMACIONES_cambioBolaReserva(partida);
+						
+						
+	} 	
+	
+}
+int ANIMACIONES_pulsasESC(int nSortir) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
+		nSortir = 1;
+	}
+	return nSortir;
+}
+int ANIMACIONES_pulsaP(int pausa) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_P) == 1) {
+		if (pausa == 0) {
+			pausa = 1;
+						
+		} 
+		else {
+			pausa = 0;
+		}
+						
+	}	
+	return pausa;
+}
+int ANIMACIONES_restablecerPausa (int pausa) {
+	if (LS_allegro_key_pressed(ALLEGRO_KEY_P) == 1) {
+		if (pausa == 1) {
+			pausa = 0;
+						
+		} 
+		else {
+			pausa = 1;
+		}
+						
+	}
+	return pausa;
+}
 int ANIMACIONES_gameOver(Partida partida[1]) {
 	
 	int i = 9;
 	int j;
 	int game_over = 0;
-	for (j = 0; j < 11; j++) {
+	for (j = 0; j < 12; j++) {
 		if (partida[0].casilla[i][j].ok_bola == 1) {
 			game_over = 1;
 		}
@@ -50,7 +128,7 @@ void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, i
 	
 	
 	while(partida[0].disparador.bola.pos_y >= pos_y) {
-		GRAFICA_pintarPantalla(partida);
+		GRAFICA_pintarPantalla(partida,0);
 		partida[0].disparador.bola.pos_y = partida[0].disparador.bola.pos_y - 4;
 		
 		pintarDisparador(partida);
@@ -136,9 +214,14 @@ void ANIMACIONES_restablecerTiempoNivel(Partida partida[1]) {
 	//restablecerlo a cero y subir nivel	
 	partida[0].tiempo.tiempo_nivel = 1;	
 	partida[0].jugador.nivel++;
-	partida[0].nivel.aum_velocidad = partida[0].nivel.aum_velocidad + 2;
+	partida[0].nivel.aum_velocidad = partida[0].nivel.aum_velocidad - 0.2;
 	
-	partida[0].nivel.tiempo_nivel = 64/(partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad);
+	if (partida[0].nivel.aum_velocidad >= 2 ) {
+		partida[0].nivel.aum_velocidad = 2;
+		
+		
+	}
+	
 
 }
 
