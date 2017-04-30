@@ -1,69 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\Practica2.workspace">
-  <int Value="3" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\Practica2.workspace" Name="m_workspaceName"/>
-  <TabInfoArray Name="TabInfoArray">
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\main.c" Name="FileName"/>
-      <int Value="15" Name="FirstVisibleLine"/>
-      <int Value="40" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.c" Name="FileName"/>
-      <int Value="30" Name="FirstVisibleLine"/>
-      <int Value="225" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="3"/>
-        <IntVectorItem Value="12"/>
-        <IntVectorItem Value="20"/>
-        <IntVectorItem Value="30"/>
-        <IntVectorItem Value="50"/>
-        <IntVectorItem Value="57"/>
-        <IntVectorItem Value="63"/>
-        <IntVectorItem Value="68"/>
-        <IntVectorItem Value="88"/>
-        <IntVectorItem Value="145"/>
-        <IntVectorItem Value="157"/>
-        <IntVectorItem Value="164"/>
-        <IntVectorItem Value="174"/>
-        <IntVectorItem Value="187"/>
-        <IntVectorItem Value="201"/>
-        <IntVectorItem Value="209"/>
-        <IntVectorItem Value="238"/>
-      </IntVector>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.c" Name="FileName"/>
-      <int Value="9" Name="FirstVisibleLine"/>
-      <int Value="16" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds">
-        <IntVectorItem Value="82"/>
-      </IntVector>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.h" Name="FileName"/>
-      <int Value="5" Name="FirstVisibleLine"/>
-      <int Value="22" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\grafica.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="20" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-  </TabInfoArray>
+  <TabInfoArray Name="TabInfoArray"/>
   <SerializedObject Name="m_breakpoints">
     <long Value="1" Name="Count"/>
     <SerializedObject Name="Breakpoint0">
       <wxString Value="C:\Users\MB\Desktop\p2p2p2\Projecte_Base_Windows\Practica2\animaciones.h" Name="file"/>
-      <int Value="29" Name="lineno"/>
+      <int Value="31" Name="lineno"/>
       <wxString Value="" Name="function_name"/>
       <wxString Value="" Name="memory_address"/>
       <int Value="1" Name="bp_type"/>

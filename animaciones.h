@@ -4,6 +4,7 @@
 #include <time.h>
 #include "grafica.h"
 #include "LS_allegro.h"
+#include <string.h>
 #include <datos.h>
 
 
@@ -13,19 +14,20 @@ void ANIMACIONES_moverDisparadorIzquierda(Partida partida[1]);
 void ANIMACIONES_moverDisparadorDerecha(Partida partida[1]);
 void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, int j);
 void ANIMACIONES_dispararBola(Partida partida[1], int * u, int * w);
-void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1]);
+void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1], Ranking ranking[1]);
 int ANIMACIONES_gameOver(Partida partida[1]);
 void ANIMACIONES_pulsaP(int * pausa);
 void ANIMACIONES_pulsasD(Partida partida[1]);
 void ANIMACIONES_pulsasA(Partida partida[1]);
+void ANIMACIONES_ordenarRanking(Ranking ranking[1]);
 void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w);
 void ANIMACIONES_tiempoDeBajarFila(Partida partida[1]);
-void ANIMACIONES_pulsasESC(int * nSortir);
-int ANIMACIONES_restablecerPausa (int pausa);
+void ANIMACIONES_pulsasESC(int * nSortir , Ranking ranking[1], Partida partida[1]);
+void ANIMACIONES_restablecerPausa (int * pausa);
 void ANIMACIONES_eliminarBola (Partida partida[1], int * u, int * w);
 void ANIMACIONES_cambioBolaReserva(Partida partida[1]);
 void ANIMACIONES_bajaFila(Partida partida[1]);
-void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_over,  int * nSortir,  int * pausa);
+void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_over,  int * nSortir,  int * pausa, float * time0, Ranking ranking[1]);
 
 
 #endif

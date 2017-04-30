@@ -20,10 +20,14 @@ void GRAFICA_pintarPausa() {
 
 void GRAFICA_verRanking(Ranking ranking[1]) {
 	int i;
+	
+	ANIMACIONES_ordenarRanking(ranking);
+	printf("\n");
 	for (i = 0; i < 10; i++) {
-		printf("%s\n", ranking[0].acPlayers[i]);
+		printf("\t Nombre: %d %s nivel: %d minutos: %d segundos: %d \n", i+1, ranking[0].acPlayers[i], ranking[0].niveles[i], ranking[0].minutos[i], ranking[0].segundos[i]);
 	
 	}
+	printf("\n");
 
 }
 

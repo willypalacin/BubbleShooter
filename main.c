@@ -26,22 +26,9 @@ int main(void){
 				
 				while(!nSortir){
 					time1 = (float) clock();
-					//Cuenta segundos de uno en uno
 					time0 = ANIMACIONES_aumentarSegundos(time0, time1, partida);
-					
-					ANIMACIONES_movimientos(partida, &u, &w, &game_over, &nSortir, &pausa);
-					
-					
-					while (pausa == 1) {
-						GRAFICA_pintarPausa();
-						time0 = (float) clock();
-						//Si vuelves a pulsar P, restablecemos
-						pausa = ANIMACIONES_restablecerPausa(pausa);
-					}
-				
-					
+					ANIMACIONES_movimientos(partida, &u, &w, &game_over, &nSortir, &pausa, &time0, ranking);
 					GRAFICA_pintarPantalla(partida, game_over);
-				
 					//Pintem la pantalla de la finestra gràfica
 					LS_allegro_clear_and_paint(BLACK);
 				}

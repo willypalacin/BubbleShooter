@@ -19,10 +19,10 @@ typedef struct {
 } Jugador;
 
 typedef struct {
-	char acPlayers[10][21];
-	int niveles[10];
-	int minutos[10];
-	int segundos[10];
+	char acPlayers[100][21];
+	int niveles[100];
+	int minutos[100];
+	int segundos[100];
 } Ranking; 
 
 typedef struct {

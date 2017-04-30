@@ -2,6 +2,7 @@
 #define _GRAFICA_H_
 
 #include "datos.h"
+#include "animaciones.h"
 #include <stdio.h>
 #include "LS_allegro.h"
 #include <time.h>

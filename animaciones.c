@@ -13,12 +13,49 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 	return time0;
 	
 }
-
-void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1]) {
-	if (ANIMACIONES_gameOver(partida) == 1) {
-		*game_over = 1;
+	
+void ANIMACIONES_ordenarRanking(Ranking ranking[1]) {	
+	
+	int  i, j;
+	int tmp_mins;
+	int tmp_segs;
+	int tmp_nivel;
+	char tmp_nombre[21];
+	for (i = 0; i < 11; i++) {
+		for (j = 10; j >= i; j--){
+			if(ranking[0].minutos[j] > ranking[0].minutos[j-1] || (ranking[0].minutos[j] == ranking[0].minutos[j-1] && ranking[0].segundos[j] > ranking[0].segundos[j-1])) {
+				tmp_mins = ranking[0].minutos[j];
+				tmp_segs = ranking[0].segundos[j];
+				tmp_nivel = ranking[0].niveles[j];
+				strcpy(tmp_nombre, ranking[0].acPlayers[j]);
+				
+				ranking[0].minutos[j] = ranking[0].minutos[j-1];
+				ranking[0].segundos[j] = ranking[0].segundos[j-1];
+				ranking[0].niveles[j] = ranking[0].niveles[j-1];
+				strcpy(ranking[0].acPlayers[j], ranking[0].acPlayers[j-1]);
+				
+				ranking[0].minutos[j-1] = tmp_mins;
+				ranking[0].segundos[j-1] = tmp_segs;
+				ranking[0].niveles[j-1] = tmp_nivel;
+				strcpy(ranking[0].acPlayers[j-1], tmp_nombre);
+			}
+		}
 	}
 	
+	
+
+}
+
+	
+
+
+void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1], Ranking ranking[1]) {
+	int i;
+	if (ANIMACIONES_gameOver(partida) == 1) {
+		*game_over = 1;
+		
+		
+	}
 }
 void ANIMACIONES_pulsasA(Partida partida[1]) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_A) == 1) {
@@ -44,7 +81,8 @@ void ANIMACIONES_treintaSegundos(Partida partida[1]) {
 
 void ANIMACIONES_tiempoDeBajarFila(Partida partida[1]) {
 	
-	if (partida[0].tiempo.segs % 60  >= partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad) {
+	//if (partida[0].tiempo.segs % 60  >= partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad) {
+	if (partida[0].tiempo.segs % 60  >= 30) {
 		partida[0].tiempo.segs = 0;
 		ANIMACIONES_bajaFila(partida);
 		GRAFICA_generarFilaBola1(partida);
@@ -59,12 +97,24 @@ void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w) {
 						
 						
 	} 	
+	 
+}
+void entrarRanking (Partida partida[1], Ranking ranking[1]) {
+
+		
+	strcpy(ranking[0].acPlayers[10], partida[0].jugador.nombre);
+	ranking[0].niveles[10] = partida[0].jugador.nivel;
+	ranking[0].minutos[10] = partida[0].tiempo.tiempo_partida / 60;
+	ranking[0].segundos[10] = partida[0].tiempo.tiempo_partida % 60;
 	
 }
-void ANIMACIONES_pulsasESC(int * nSortir) {
+void ANIMACIONES_pulsasESC(int * nSortir, Ranking ranking[1], Partida partida[1]) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){
 		*nSortir = 1;
+		entrarRanking(partida,ranking);
 	}
+	
+		
 	
 }
 void ANIMACIONES_pulsaP(int * pausa) {
@@ -80,18 +130,17 @@ void ANIMACIONES_pulsaP(int * pausa) {
 	}	
 	
 }
-int ANIMACIONES_restablecerPausa (int pausa) {
+void ANIMACIONES_restablecerPausa (int * pausa) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_P) == 1) {
-		if (pausa == 1) {
-			pausa = 0;
+		if (*pausa == 1) {
+			*pausa = 0;
 						
 		} 
 		else {
-			pausa = 1;
+			*pausa = 1;
 		}
 						
 	}
-	return pausa;
 }
 int ANIMACIONES_gameOver(Partida partida[1]) {
 	
@@ -278,14 +327,21 @@ void ANIMACIONES_moverDisparadorIzquierda(Partida partida[1]) {
 	}
 }
 
-void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_over,  int * nSortir,  int * pausa) {
+void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_over,  int * nSortir,  int * pausa, float * time0, Ranking ranking[1]) {
 	ANIMACIONES_treintaSegundos(partida);
 	ANIMACIONES_tiempoDeBajarFila(partida);
 	ANIMACIONES_pulsasEspacio(partida, u, w);
 	ANIMACIONES_pulsasA(partida);
 	ANIMACIONES_pulsasD(partida);
 				
-	ANIMACIONES_pulsasESC(nSortir);
-	ANIMACIONES_hayGameOver(game_over, partida);
+	ANIMACIONES_pulsasESC(nSortir, ranking, partida);
+	ANIMACIONES_hayGameOver(game_over, partida, ranking);
 	ANIMACIONES_pulsaP(pausa);
+	
+	while (*pausa == 1) {
+		GRAFICA_pintarPausa();
+		*time0 = (float) clock();
+		//Si vuelves a pulsar P, restablecemos
+		ANIMACIONES_restablecerPausa(pausa);
+	}
 }
