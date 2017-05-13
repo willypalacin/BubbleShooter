@@ -16,6 +16,7 @@ void GRAFICA_pedirNombre(Partida partida[1]);
 void GRAFICA_pintarPantalla(Partida partida[1], int game_over);
 void GRAFICA_inicializarVelocidades(Partida partida[1]);
 void GRAFICA_pintarPausa();
+void GRAFICA_mostrarRanking(Ranking ranking[1]);
 void GRAFICA_pintarGameOver(Partida partida[1]);
 void GRAFICA_generarFilaBola1(Partida partida[1]);
 void GRAFICA_verRanking(Ranking ranking[1]);

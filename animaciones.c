@@ -333,9 +333,10 @@ void ANIMACIONES_movimientos(Partida partida[1], int * u, int * w, int * game_ov
 	ANIMACIONES_pulsasEspacio(partida, u, w);
 	ANIMACIONES_pulsasA(partida);
 	ANIMACIONES_pulsasD(partida);
+
 				
-	ANIMACIONES_pulsasESC(nSortir, ranking, partida);
-	ANIMACIONES_hayGameOver(game_over, partida, ranking);
+	ANIMACIONES_pulsasESC(nSortir, partida[0].ranking, partida);
+	ANIMACIONES_hayGameOver(game_over, partida, partida[0].ranking);
 	ANIMACIONES_pulsaP(pausa);
 	
 	while (*pausa == 1) {

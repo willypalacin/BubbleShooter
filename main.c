@@ -9,7 +9,6 @@
 int main(void){
 	Partida partida[1];
 	int opcion,u,w,pausa,game_over,iResult;
-	Ranking ranking[1];
 	float time0, time1;
 	do {
 		GRAFICA_mostrarMenu();
@@ -27,7 +26,7 @@ int main(void){
 				while(!nSortir){
 					time1 = (float) clock();
 					time0 = ANIMACIONES_aumentarSegundos(time0, time1, partida);
-					ANIMACIONES_movimientos(partida, &u, &w, &game_over, &nSortir, &pausa, &time0, ranking);
+					ANIMACIONES_movimientos(partida, &u, &w, &game_over, &nSortir, &pausa, &time0, partida[0].ranking);
 					GRAFICA_pintarPantalla(partida, game_over);
 					//Pintem la pantalla de la finestra gràfica
 					LS_allegro_clear_and_paint(BLACK);
@@ -35,7 +34,7 @@ int main(void){
 				LS_allegro_exit();
 				break;
 			case 3:
-				iResult = readRankingInfo(ranking[0].acPlayers, ranking[0].niveles, ranking[0].minutos, ranking[0].segundos);
+				iResult = readRankingInfo(partida[0].ranking[0].acPlayers, partida[0].ranking[0].niveles, partida[0].ranking[0].minutos, partida[0].ranking[0].segundos);
 				
 				if (iResult == -1) {
 					printf(ERROR_CARGA_RANKING);
@@ -46,7 +45,7 @@ int main(void){
 				break;
 			
 			case 4:
-				GRAFICA_verRanking(ranking);
+				GRAFICA_verRanking(partida[0].ranking);
 		}
 		
 	} while (opcion != 5);

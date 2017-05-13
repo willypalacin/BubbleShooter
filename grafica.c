@@ -211,6 +211,17 @@ void mostrarTiempoTotal(Partida partida[1]) {
 
 }
 
+void GRAFICA_mostrarRanking(Ranking ranking[1]) {
+	
+	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 820,	390, 0,"%s","Ranking");
+	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 430, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[0], ranking[0].niveles[0], ranking[0].minutos[0], ranking[0].segundos[0]);
+	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 450, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[1], ranking[0].niveles[0], ranking[0].minutos[1], ranking[0].segundos[1]);
+	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 470, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[2], ranking[0].niveles[2], ranking[0].minutos[2], ranking[0].segundos[2]);
+	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 490, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[3], ranking[0].niveles[3], ranking[0].minutos[3], ranking[0].segundos[3]);
+	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 510, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[4], ranking[0].niveles[4], ranking[0].minutos[4], ranking[0].segundos[4]);
+	
+}
+
 void mostrarNivel (Partida partida[1]) {
 	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 845, 110, 0,"%s","NIVEL");
 	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 885, 149, 0,"%d", partida[0].jugador.nivel);
@@ -240,6 +251,8 @@ void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over) {
 	
 }
 
+
+
 void GRAFICA_pintarPantalla(Partida partida[1],int game_over) {
 	//Pintamos rectángulo principal y secundario
 	al_draw_filled_rectangle (0, 0, 770, 600, LS_allegro_get_color(LIGHT_BLUE));
@@ -253,6 +266,7 @@ void GRAFICA_pintarPantalla(Partida partida[1],int game_over) {
 	al_draw_line(0 ,500 ,770, 500, LS_allegro_get_color(WHITE), 0);					
 	al_draw_line(770 ,600 ,770, 550, LS_allegro_get_color(WHITE), 0);
 	
+	GRAFICA_mostrarRanking(partida[0].ranking);
 	pintarBolaReserva(partida);
 	pintarDisparador(partida);
 	pintarBolas(partida);

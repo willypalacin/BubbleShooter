@@ -57,7 +57,8 @@ typedef struct {
 	Disparador disparador;
 	Tiempo tiempo;
 	Bola bola[4];
-	Nivel nivel;	
+	Nivel nivel;
+	Ranking ranking[1];
 } Partida;
 
 
