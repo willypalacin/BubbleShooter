@@ -21,8 +21,8 @@ void ANIMACIONES_ordenarRanking(Ranking ranking[1]) {
 	int tmp_segs;
 	int tmp_nivel;
 	char tmp_nombre[21];
-	for (i = 0; i < 11; i++) {
-		for (j = 10; j >= i; j--){
+	for (i = 0; i < 10; i++) {
+		for (j = 9; j >= i; j--){
 			if(ranking[0].minutos[j] > ranking[0].minutos[j-1] || (ranking[0].minutos[j] == ranking[0].minutos[j-1] && ranking[0].segundos[j] > ranking[0].segundos[j-1])) {
 				tmp_mins = ranking[0].minutos[j];
 				tmp_segs = ranking[0].segundos[j];

@@ -45,7 +45,13 @@ int main(void){
 				break;
 			
 			case 4:
-				GRAFICA_verRanking(partida[0].ranking);
+				if(iResult == 1) {
+					GRAFICA_verRanking(partida[0].ranking);
+				}
+				else {
+					printf("Debe cargar ranking antes de cargarlo\n");
+		
+				}
 		}
 		
 	} while (opcion != 5);
