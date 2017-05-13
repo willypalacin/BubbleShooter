@@ -55,8 +55,8 @@ void GRAFICA_inicializarBolasReserva (Partida partida[1]) {
 void GRAFICA_inicializarVelocidades(Partida partida[1]) {
 	partida[0].tiempo.segs = 0;
 	partida[0].nivel.vel_inicial = 3;
-	partida[0].nivel.aum_velocidad = 0,2;
-	partida[0].nivel.tiempo_nivel = 64/(partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad);	
+	partida[0].nivel.aum_velocidad = 0.2 * partida[0].jugador.nivel;
+	
 }
 
 void GRAFICA_pintarGameOver(Partida partida[1]) {
@@ -229,12 +229,12 @@ void mostrarNivel (Partida partida[1]) {
 	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(WHITE), 890, 240, 0,"%d", partida[0].tiempo.tiempo_nivel % 60);
 }
 
-void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over) {
+void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over, int u) {
 	*game_over = 0;
 	*pausa = 0;
 	partida[0].tiempo.tiempo_partida = 1;
 	partida[0].tiempo.tiempo_nivel = 1;	
-	partida[0].jugador.nivel = 1;
+	partida[0].jugador.nivel = u;
 	
 	//Inicializaremos color y posicion de las bolas de reserva
 	GRAFICA_inicializarBolasReserva (partida);
@@ -247,8 +247,6 @@ void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over) {
 	GRAFICA_generarFilaBola1(partida);
 	
 }
-
-
 
 void GRAFICA_pintarPantalla(Partida partida[1],int game_over) {
 	//Pintamos rectángulo principal y secundario
@@ -277,7 +275,6 @@ void GRAFICA_pintarPantalla(Partida partida[1],int game_over) {
 	
 	
 }
-
 	
 int GRAFICA_elegirOpcion() {
 	char opcion_char[10];

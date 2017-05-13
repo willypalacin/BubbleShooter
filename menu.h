@@ -9,6 +9,9 @@
 #include "datos.h"
 #include "loadRanking.h"
 
+void MENU_mostrarMenu();
 void MENU_case1(Partida partida[1]);
+void MENU_case2(Partida partida[1]);
+void MENU_pedirNivel(int * nivel);
 
 #endif

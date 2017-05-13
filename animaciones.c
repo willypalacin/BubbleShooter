@@ -46,9 +46,6 @@ void ANIMACIONES_ordenarRanking(Ranking ranking[1]) {
 
 }
 
-	
-
-
 void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1], Ranking ranking[1]) {
 	int i;
 	if (ANIMACIONES_gameOver(partida) == 1) {
@@ -80,9 +77,13 @@ void ANIMACIONES_treintaSegundos(Partida partida[1]) {
 }
 
 void ANIMACIONES_tiempoDeBajarFila(Partida partida[1]) {
-	
-	//if (partida[0].tiempo.segs % 60  >= partida[0].nivel.vel_inicial + partida[0].nivel.aum_velocidad) {
-	if (partida[0].tiempo.segs % 60  >= 30) {
+	int velocidad_total;
+	velocidad_total = partida[0].nivel.vel_inicial - partida[0].nivel.aum_velocidad;
+	if (velocidad_total < 1) {
+		velocidad_total = 1;
+	}
+	//if (partida[0].tiempo.segs % 60  >= partida[0].nivel.vel_inicial - partida[0].nivel.aum_velocidad) {
+	if (partida[0].tiempo.segs  >= velocidad_total) {
 		partida[0].tiempo.segs = 0;
 		ANIMACIONES_bajaFila(partida);
 		GRAFICA_generarFilaBola1(partida);
@@ -155,24 +156,6 @@ int ANIMACIONES_gameOver(Partida partida[1]) {
 	}
 	
 return game_over;
-}
-
-int esperarCeroUnSegundo(Partida partida[1]) {
-	int time5; 
-	int time6;
-	int si;
-	time5 = (float) clock();
-	time6 = (float) clock();
-	while ((time6-time5)/(float)CLOCKS_PER_SEC <= 0.1) {
-		time6 = (float) clock();
-		
-		
-		
-	}
-	si = 1;
-	return si;
-	
-	
 }
 
 void ANIMACIONES_llevarBolaHastaPosicion(Partida partida[1], int pos_y, int i, int j) {
@@ -265,7 +248,7 @@ void ANIMACIONES_restablecerTiempoNivel(Partida partida[1]) {
 	//restablecerlo a cero y subir nivel	
 	partida[0].tiempo.tiempo_nivel = 1;	
 	partida[0].jugador.nivel++;
-	partida[0].nivel.aum_velocidad = partida[0].nivel.aum_velocidad - 0.2;
+	partida[0].nivel.aum_velocidad = 0.2 * partida[0].jugador.nivel;
 	
 	if (partida[0].nivel.aum_velocidad >= 2 ) {
 		partida[0].nivel.aum_velocidad = 2;

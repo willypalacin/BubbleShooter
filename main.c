@@ -4,6 +4,7 @@
 #include "animaciones.h"
 #include <time.h>
 #include "datos.h"
+#include "menu.h"
 #include "loadRanking.h"
 
 int main(void){
@@ -20,6 +21,8 @@ int main(void){
 				MENU_case1(partida);
 				
 				break;
+			case 2:
+				MENU_case2(partida);
 			case 3:
 				iResult = readRankingInfo(partida[0].ranking[0].acPlayers, partida[0].ranking[0].niveles, partida[0].ranking[0].minutos, partida[0].ranking[0].segundos);
 				

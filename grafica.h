@@ -19,7 +19,7 @@ void GRAFICA_mostrarRanking(Ranking ranking[1]);
 void GRAFICA_pintarGameOver(Partida partida[1]);
 void GRAFICA_generarFilaBola1(Partida partida[1]);
 void GRAFICA_verRanking(Ranking ranking[1]);
-void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over);
+void GRAFICA_inicializarValores(Partida partida[1],int* pausa, int* game_over, int u);
 void pintarDisparador(Partida partida[1]);
 void GRAFICA_generarMatriz(Partida partida[1]);
 void GRAFICA_inicializarDisparador(Partida partida[1]);
