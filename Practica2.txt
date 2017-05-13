@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/LS_allegro.c.o ./Debug/loadRanking.c.o ./Debug/animaciones.c.o ./Debug/grafica.c.o   
+./Debug/main.c.o ./Debug/LS_allegro.c.o ./Debug/loadRanking.c.o ./Debug/animaciones.c.o ./Debug/grafica.c.o ./Debug/menu.c.o   

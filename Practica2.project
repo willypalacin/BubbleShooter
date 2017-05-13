@@ -31,6 +31,8 @@
     <File Name="grafica.h"/>
     <File Name="datos.h"/>
     <File Name="ranking.txt"/>
+    <File Name="menu.h"/>
+    <File Name="menu.c"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

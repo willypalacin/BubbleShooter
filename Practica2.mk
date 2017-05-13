@@ -63,7 +63,7 @@ AS       := C:/MinGW-4.8.1/bin/as.exe
 ##
 CodeLiteDir:=C:\Program Files (x86)\CodeLite
 UNIT_TEST_PP_SRC_DIR:=C:\UnitTest++-1.3
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) $(IntermediateDirectory)/animaciones.c$(ObjectSuffix) $(IntermediateDirectory)/grafica.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/LS_allegro.c$(ObjectSuffix) $(IntermediateDirectory)/loadRanking.c$(ObjectSuffix) $(IntermediateDirectory)/animaciones.c$(ObjectSuffix) $(IntermediateDirectory)/grafica.c$(ObjectSuffix) $(IntermediateDirectory)/menu.c$(ObjectSuffix) 
 
 
 
@@ -129,6 +129,14 @@ $(IntermediateDirectory)/grafica.c$(DependSuffix): grafica.c
 
 $(IntermediateDirectory)/grafica.c$(PreprocessSuffix): grafica.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/grafica.c$(PreprocessSuffix) "grafica.c"
+
+$(IntermediateDirectory)/menu.c$(ObjectSuffix): menu.c $(IntermediateDirectory)/menu.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "C:/Users/MB/Desktop/p2p2p2/Projecte_Base_Windows/Practica2/menu.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/menu.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/menu.c$(DependSuffix): menu.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/menu.c$(ObjectSuffix) -MF$(IntermediateDirectory)/menu.c$(DependSuffix) -MM "menu.c"
+
+$(IntermediateDirectory)/menu.c$(PreprocessSuffix): menu.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/menu.c$(PreprocessSuffix) "menu.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

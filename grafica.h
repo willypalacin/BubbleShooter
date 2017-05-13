@@ -9,7 +9,6 @@
 #include <string.h>
 
 int GRAFICA_colorRandom();
-void GRAFICA_mostrarMenu();
 int GRAFICA_elegirOpcion();
 void GRAFICA_inicializarBolasReserva (Partida partida[1]);
 void GRAFICA_pedirNombre(Partida partida[1]);

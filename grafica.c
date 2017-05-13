@@ -65,10 +65,7 @@ void GRAFICA_pintarGameOver(Partida partida[1]) {
 	al_draw_textf (LS_allegro_get_font(NORMAL),LS_allegro_get_color(RED), 370, 380, 0,"%s","Pulse esc");
 	
 }
-void GRAFICA_mostrarMenu() {
-	printf("Bienvenido a LSBooble\n");
-	printf("\n\t1. Nueva Partida\n\t2. Escojer nivel\n\t3. Cargar ranking\n\t4. Ver Ranking\n\t5. Salir\n\tOpcion: ");
-}
+
 
 void GRAFICA_generarMatriz(Partida partida[1]) {
 	int i, j;
