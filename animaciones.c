@@ -15,35 +15,32 @@ float ANIMACIONES_aumentarSegundos(float time0, float time1, Partida partida[1])
 }
 	
 void ANIMACIONES_ordenarRanking(Ranking ranking[1]) {	
-	
 	int  i, j;
 	int tmp_mins;
 	int tmp_segs;
 	int tmp_nivel;
-	char tmp_nombre[21];
-	for (i = 0; i < 10; i++) {
-		for (j = 9; j >= i; j--){
-			if(ranking[0].minutos[j] > ranking[0].minutos[j-1] || (ranking[0].minutos[j] == ranking[0].minutos[j-1] && ranking[0].segundos[j] > ranking[0].segundos[j-1])) {
-				tmp_mins = ranking[0].minutos[j];
-				tmp_segs = ranking[0].segundos[j];
-				tmp_nivel = ranking[0].niveles[j];
-				strcpy(tmp_nombre, ranking[0].acPlayers[j]);
-				
-				ranking[0].minutos[j] = ranking[0].minutos[j-1];
-				ranking[0].segundos[j] = ranking[0].segundos[j-1];
-				ranking[0].niveles[j] = ranking[0].niveles[j-1];
-				strcpy(ranking[0].acPlayers[j], ranking[0].acPlayers[j-1]);
-				
-				ranking[0].minutos[j-1] = tmp_mins;
-				ranking[0].segundos[j-1] = tmp_segs;
-				ranking[0].niveles[j-1] = tmp_nivel;
-				strcpy(ranking[0].acPlayers[j-1], tmp_nombre);
+	char tmp_nombre[21];	
+	int n = 10;
+	  for (i = 0 ; i < ( n - 1 ); i++) {
+		  for (j = 0 ; j < n - i - 1; j++) {
+			 if(ranking[0].minutos[j] < ranking[0].minutos[j+1] || (ranking[0].minutos[j] == ranking[0].minutos[j+1] && ranking[0].segundos[j] < ranking[0].segundos[j+1])) {
+					tmp_mins = ranking[0].minutos[j];
+					tmp_segs = ranking[0].segundos[j];
+					tmp_nivel = ranking[0].niveles[j];
+					strcpy(tmp_nombre, ranking[0].acPlayers[j]);
+					
+					ranking[0].minutos[j] = ranking[0].minutos[j+1];
+					ranking[0].segundos[j] = ranking[0].segundos[j+1];
+					ranking[0].niveles[j] = ranking[0].niveles[j+1];
+					strcpy(ranking[0].acPlayers[j], ranking[0].acPlayers[j+1]);
+					
+					ranking[0].minutos[j+1] = tmp_mins;
+					ranking[0].segundos[j+1] = tmp_segs;
+					ranking[0].niveles[j+1] = tmp_nivel;
+					strcpy(ranking[0].acPlayers[j+1], tmp_nombre);
 			}
+		  }
 		}
-	}
-	
-	
-
 }
 
 void ANIMACIONES_hayGameOver(int * game_over, Partida partida[1], Ranking ranking[1]) {
@@ -89,7 +86,6 @@ void ANIMACIONES_tiempoDeBajarFila(Partida partida[1]) {
 		GRAFICA_generarFilaBola1(partida);
 	}	
 }
-
 void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_SPACE) == 1) {
 		ANIMACIONES_dispararBola(partida, u, w);
@@ -101,13 +97,14 @@ void ANIMACIONES_pulsasEspacio(Partida partida[1], int * u, int * w) {
 	 
 }
 void entrarRanking (Partida partida[1], Ranking ranking[1]) {
-
+	if(partida[0].jugador.minutos > ranking[0].minutos[9] || (partida[0].jugador.minutos == ranking[0].minutos[9] && partida[0].jugador.segundos > ranking[0].segundos[9])){
+		strcpy(ranking[0].acPlayers[9], partida[0].jugador.nombre);
+		ranking[0].niveles[9] = partida[0].jugador.nivel;
+		ranking[0].minutos[9] = partida[0].tiempo.tiempo_partida / 60;
+		ranking[0].segundos[9] = partida[0].tiempo.tiempo_partida % 60;
 		
-	strcpy(ranking[0].acPlayers[10], partida[0].jugador.nombre);
-	ranking[0].niveles[10] = partida[0].jugador.nivel;
-	ranking[0].minutos[10] = partida[0].tiempo.tiempo_partida / 60;
-	ranking[0].segundos[10] = partida[0].tiempo.tiempo_partida % 60;
-	
+	}
+	ANIMACIONES_ordenarRanking(ranking);
 }
 void ANIMACIONES_pulsasESC(int * nSortir, Ranking ranking[1], Partida partida[1]) {
 	if (LS_allegro_key_pressed(ALLEGRO_KEY_ESCAPE)){

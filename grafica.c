@@ -209,14 +209,20 @@ void mostrarTiempoTotal(Partida partida[1]) {
 }
 
 void GRAFICA_mostrarRanking(Ranking ranking[1]) {
-	
-	al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 820,	390, 0,"%s","Ranking");
-	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 430, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[0], ranking[0].niveles[0], ranking[0].minutos[0], ranking[0].segundos[0]);
-	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 450, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[1], ranking[0].niveles[0], ranking[0].minutos[1], ranking[0].segundos[1]);
-	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 470, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[2], ranking[0].niveles[2], ranking[0].minutos[2], ranking[0].segundos[2]);
-	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 490, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[3], ranking[0].niveles[3], ranking[0].minutos[3], ranking[0].segundos[3]);
-	al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 510, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[4], ranking[0].niveles[4], ranking[0].minutos[4], ranking[0].segundos[4]);
-	
+	ANIMACIONES_ordenarRanking(ranking);
+	if(ranking[0].iResult == 1){
+		al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 820,	390, 0,"%s","Ranking");
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 430, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[0], ranking[0].niveles[0], ranking[0].minutos[0], ranking[0].segundos[0]);
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 450, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[1], ranking[0].niveles[0], ranking[0].minutos[1], ranking[0].segundos[1]);
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 470, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[2], ranking[0].niveles[2], ranking[0].minutos[2], ranking[0].segundos[2]);
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 490, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[3], ranking[0].niveles[3], ranking[0].minutos[3], ranking[0].segundos[3]);
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 510, 0,"%s - N%d - %d:%d", ranking[0].acPlayers[4], ranking[0].niveles[4], ranking[0].minutos[4], ranking[0].segundos[4]);
+	}
+	else {
+		al_draw_textf (LS_allegro_get_font(LARGE),LS_allegro_get_color(WHITE), 810,	390, 0, "%s","Ranking");
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 810, 430, 0, "%s","No hay jugadores");
+		al_draw_textf (LS_allegro_get_font(SMALL),LS_allegro_get_color(WHITE), 820, 450, 0, "%s","en el ranking");
+	}
 }
 
 void mostrarNivel (Partida partida[1]) {
